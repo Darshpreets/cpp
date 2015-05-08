@@ -1,0 +1,69 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main ()
+
+{
+
+    double Q,p1,T1,p2,p5,p6,T6,p3,y,T4,hc,T2,ma,p,cop,T3,T5,p4,enterr,powerT3,power5,powermy,wait;
+    char check;
+    y=0.286;
+    cout<<"\n Program to calculate coefficient of performance of a \n simple air-cooled system for Aeroplane. \n";
+    here:
+    cout<<"Enter the values of the variables followed by enter\n \n Load of AC system(TR) \n";
+    cin>>Q;
+    double h,ta=30,pa=1,ppwr=1.86737,l=6.4;
+    cout<<"\n Enter the height in Km \t";
+    cin>>h;
+    T1=ta-(l*h);
+    cout<<"\nVAlue of T1 \t"<<T1<<endl;
+    cout<<"\nVAlue of ta \t"<<ta<<endl;
+    cout<<"\nVAlue of ppwr \t"<<ppwr<<endl;
+    p1=(pow((T1/ta),ppwr));
+    T1 += 273;
+    cout<<"\n value of p1 \t"<<p1<<endl;
+    cout<<"Increased pressure due to ramming (bar)"<<endl;
+    cin>>p2;
+    cout<<"Temperature reduced by heat exchanger (C)"<<endl;
+    cin>>hc;
+    hc=hc+273;
+    cout<<"Pressure in compressor(bar)"<<endl;
+    cin>>p3;
+    cout<<"pressure in the cabin (bar)"<<endl;
+    cin>>p6;
+    p5=p6;
+    cout<<"Temperature in the cabin (C) \n";
+    cin>>T6;
+    T6=T6+273;
+
+
+    enterr=(pow((p2/p1),y));
+    T2=T1*enterr;
+    cout<<"Calculated value of temperature Increwased doe toi ramming is \t"<<T2<<"K"<<endl;
+    powerT3=(pow((p3/p2),y));
+    T3=((T2)*powerT3);
+    cout<<"Calculated value of Temperature of air in compressor is \t"<<T3<<"K"<<endl;
+    T4=(T3-hc);
+    T4=T4+273;
+    cout <<"Calculated value of temperature of air leaving heat exchanger is \t"<<T4<<"K"<<endl;
+    power5=(pow((p5/p3),y));
+    T5=((T4)*power5);
+    ma = ((210*Q)/((1.005)*(T6-T5)));
+    cout << "\nCalculated value of Mass flow Rate of Air\t" << ma <<" kg/min";
+    ma = ma / 60;
+    cout << "\nMan flow rate of Air\t" << ma <<" kg/sec\n";
+    p = ((ma*1.005) * (T3 -T2));
+    cout << "Power required to take load of cooling cabin\t" << p << " kW\n";
+    cop = ((210*Q)/(p*60));
+    cout << "\n\nCOEFFICIENT OF PERFORMANCE IS\t" << cop << endl;
+    cout << "Do you want to run Program again? (y/n)\n";
+    cin >> check;
+    if ((check == 'y') || (check == 'Y')){
+    	goto here;
+    }
+    cout << "\n\n\t---Submitted by \n\t\t Amrinder Singh\n\t\t"
+    	 << "Class D4 Mechanical (A1)\n\t\tRoll No. 1144774(Uni.) 111088 (College)"
+    	 << "\n\t\tGNDEC Ludhiana.";
+    cin >> wait;
+    return 0;
+}
